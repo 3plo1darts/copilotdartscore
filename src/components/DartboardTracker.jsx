@@ -23,8 +23,17 @@ export default function DartboardTracker() {
 
   useEffect(() => {
     if (!cvReady) return;
-    navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+    navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: { exact: "environment" }
+      }
+    }).then(stream => {
       if (videoRef.current) videoRef.current.srcObject = stream;
+    }).catch(() => {
+      // Fallback: se "environment" non è disponibile, usa qualsiasi camera
+      navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+        if (videoRef.current) videoRef.current.srcObject = stream;
+      });
     });
   }, [cvReady]);
 
