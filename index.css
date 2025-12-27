@@ -1,0 +1,83 @@
+:root {
+  --dc-bg: #0e0e0e;
+  --dc-panel: #1a1a1a;
+  --dc-panel-light: #222;
+  --dc-accent: #f8c400;
+  --dc-accent-red: #ff5252;
+  --dc-accent-green: #4caf50;
+  --dc-text: #f5f5f5;
+  --dc-muted: #8a8a8a;
+
+  --dc-radius: 10px;
+  --dc-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--dc-bg);
+  color: var(--dc-text);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+button {
+  touch-action: manipulation;
+  font-family: inherit;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+button:hover {
+  filter: brightness(1.08);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+@supports(padding: max(0px)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+@media (max-width: 900px) {
+  .dc-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+  }
+
+  .dc-column {
+    width: 100% !important;
+    padding: 12px !important;
+    border-right: none !important;
+    border-bottom: 1px solid #222 !important;
+  }
+
+  video,
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  button {
+    font-size: 14px !important;
+    padding: 10px !important;
+  }
+
+  .score-big {
+    font-size: 42px !important;
+  }
+}
